@@ -1,11 +1,23 @@
 #ifndef ARCADE_BLACKJACK_H
 #define ARCADE_BLACKJACK_H
-
+#include "game.h"
 #include "deck.h"
 #include "hand.h"
 
 /// @file blackjack.h
 /// @brief Blackjack for one player against the dealer.
+class Blackjack : public Game {
+public: 
+    Blackjack();
+    void play() override;
+
+    int times_played() const;
+
+private:
+   int m_times_played;
+
+};
+
 
 /// How a round ended, from the player's side.
 enum class Outcome {

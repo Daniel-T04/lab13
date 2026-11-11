@@ -3,12 +3,12 @@
 
 #include <iostream>
 #include <string>
-
-#include "blackjack_game.h"
-#include "dungeon_game.h"
-#include "hangman_game.h"
+#include "arcade.h"
+#include "blackjack.h"
+#include "dungeon.h"
+#include "hangman.h"
 #include "input.h"
-#include "minesweeper_game.h"
+#include "minesweeper.h"
 
 namespace {
 enum class Choice { hangman, dungeon, blackjack, minesweeper, quit, invalid };
@@ -48,48 +48,14 @@ Choice parse_choice(const std::string &text) {
 } // namespace
 
 int main() {
-  std::string line;
-  while (true) {
-    print_menu();
-    if (!prompt_line("Choose: ", line)) {
-      break; // input ended
-    }
-    const Choice choice{parse_choice(line)};
-    if (choice == Choice::quit) {
-      break;
-    }
-    switch (choice) {
-    case Choice::hangman: {
-      Hangman game;
-      game.play();
-      report_score(game);
-      break;
-    }
-    case Choice::dungeon: {
-      Dungeon game;
-      game.play();
-      report_score(game);
-      break;
-    }
-    case Choice::blackjack: {
-      Blackjack game;
-      game.play();
-      report_score(game);
-      break;
-    }
-    case Choice::minesweeper: {
-      Minesweeper game;
-      game.play();
-      report_score(game);
-      break;
-    }
-    case Choice::quit:
-      break;
-    case Choice::invalid:
-      std::cout << "Please enter 1-4, or 0 to quit.\n";
-      break;
-    }
-  }
-  std::cout << "Goodbye.\n";
+    Arcade arcade;
+
+    arcade.add(new Hangman());
+    arcade.add(new Dungeon());
+    arcade.add(new Minesweeper());
+    arcade.add(new Blackjack());
+
+    arcade.run();
+
   return 0;
 }

@@ -1,11 +1,21 @@
 #ifndef ARCADE_DUNGEON_H
 #define ARCADE_DUNGEON_H
-
+#include "game.h"
 #include "direction.h"
 #include "room.h"
 
 /// @file dungeon.h
 /// @brief The Dungeon game: six rooms, items, a trap, and text commands.
+class Dungeon : public Game {
+public: 
+    Dungeon();
+    void play() override;
+    int times_played() const;
+
+private: 
+    int m_times_played;
+
+};
 
 /// Link two rooms in both directions.
 /// @param a the first room

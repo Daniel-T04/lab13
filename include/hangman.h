@@ -1,11 +1,22 @@
 #ifndef ARCADE_HANGMAN_H
 #define ARCADE_HANGMAN_H
-
+#include "game.h"
 #include <random>
 #include <string>
 
 /// @file hangman.h
 /// @brief Hangman, written with free functions only.
+class Hangman : public Game {
+
+public: 
+    Hangman();
+    void play() override; 
+    int times_played() const;
+    
+private:
+    int m_times_played;
+
+};
 
 /// The number of wrong guesses that lose the game.
 inline constexpr int max_misses = 6;
