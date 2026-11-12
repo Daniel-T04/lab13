@@ -39,6 +39,7 @@ add_library(arcade_lib STATIC
     src/minesweeper_game.cpp
     src/player.cpp
     src/room.cpp
+    src/monster.cpp
 )
 target_include_directories(arcade_lib PUBLIC include)
 

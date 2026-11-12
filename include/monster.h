@@ -37,4 +37,21 @@ private:
   int m_health;
 };
 
+class Goblin : public Monster {
+public:
+  Goblin();
+  int attack_damage() const override;
+  std::string describe() const override;
+};
+
+/// A massive, hulking troll.
+class Troll : public Monster {
+public:
+  Troll();
+  int attack_damage() const override;
+  std::string describe() const override;
+};
+
+
+
 #endif // ARCADE_MONSTER_H
