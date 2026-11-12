@@ -1,11 +1,27 @@
 #include "room.h"
-
+#include "monster.h"
 #include <iostream>
 
 Room::Room(std::string name, std::string description)
     : m_name{name}, m_description{description},
       m_exits{nullptr, nullptr, nullptr, nullptr}, m_items{}, m_item_count{0},
-      m_trap_damage{0} {}
+      m_trap_damage{0}, m_monster{nullptr} {}
+
+Room::~Room() {
+    delete m_monster;
+}
+
+void Room::set_monster(Monster *monster) {
+    delete m_monster;
+    m_monster = monster;
+}
+
+Monster *Room::monster() const {
+    return m_monster;
+}
+
+
+
 
 const std::string &Room::name() const { return m_name; }
 

@@ -2,9 +2,9 @@
 #define ARCADE_ROOM_H
 
 #include <string>
-
 #include "direction.h"
 #include "item.h"
+#include "monster.h"
 
 /// @file room.h
 /// @brief A place in the Dungeon.
@@ -22,6 +22,12 @@ public:
   /// @param name short name shown to the player
   /// @param description one or two sentences shown by `look`
   Room(std::string name, std::string description);
+
+  ~Room();
+
+  Room(const Room &) = delete;
+  Room &operator=(const Room &) = delete;
+
 
   /// @return the room's name
   const std::string &name() const;
@@ -63,6 +69,11 @@ public:
   /// @return health lost by a player who enters this room
   int trap_damage() const;
 
+  void set_monster(Monster *monster);
+
+  Monster *monster() const;
+
+
 private:
   std::string m_name;
   std::string m_description;
@@ -70,6 +81,7 @@ private:
   Item m_items[max_room_items];
   int m_item_count;
   int m_trap_damage;
+  Monster *m_monster{nullptr};
 };
 
 #endif // ARCADE_ROOM_H
