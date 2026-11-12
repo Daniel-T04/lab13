@@ -85,10 +85,30 @@ type = class Monster {
 
 print *monster shows the derived object, which reveals it is a Goblin form the dynamic type lookup from the virtual table.
 
+
 ptype monster still shows the base type like Monster * because ptype evaluates purely based on the static compile-time type of the pointer variable.
 
 
 
 `info vtbl *monster` for a Goblin, then for a Troll (paste both). Compare the entries:
 
+vtable for 'Monster' @ 0x555555586a60 (subobject @ 0x504000000390):
+[0]: 0x55555557613a <Goblin::~Goblin()>
+[1]: 0x555555576188 <Goblin::~Goblin()>
+[2]: 0x5555555747d4 <Goblin::attack_damage() const>
+[3]: 0x5555555747e8 <Goblin::describe[abi:cxx11]() const>
+
+
+
 Where `step` into `monster->attack_damage()` landed for each kind:
+
+The Goblin land at  Goblin::attack_damage (this=0x504000000390) at /home/ubuntu/lab13/src/monster.cpp:30
+return 3;
+
+Where the Troll
+
+
+
+
+
+
