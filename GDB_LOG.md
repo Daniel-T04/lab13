@@ -102,10 +102,10 @@ vtable for 'Monster' @ 0x555555586a60 (subobject @ 0x504000000390):
 
 Where `step` into `monster->attack_damage()` landed for each kind:
 
-The Goblin land at  Goblin::attack_damage (this=0x504000000390) at /home/ubuntu/lab13/src/monster.cpp:30
+The Goblin land at Goblin::attack_damage (this=0x504000000390) at /home/ubuntu/lab13/src/monster.cpp:30
 return 3;
 
-Where the Troll
+Where the Troll landed at Troll::attack_damage (this=0x5040000003d0)  /home/ubuntu/lab13/src/monster.cpp:41
 
 
 
