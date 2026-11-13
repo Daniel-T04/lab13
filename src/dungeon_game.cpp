@@ -1,5 +1,3 @@
-#include "dungeon_game.h"
-
 #include "dungeon.h"
 
 Dungeon::Dungeon() : Game{"Dungeon"}, m_times_played{0} {}

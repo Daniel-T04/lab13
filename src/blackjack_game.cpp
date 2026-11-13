@@ -1,5 +1,3 @@
-#include "blackjack_game.h"
-
 #include "blackjack.h"
 
 Blackjack::Blackjack() : Game{"Blackjack"}, m_times_played{0} {}

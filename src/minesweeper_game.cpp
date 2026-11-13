@@ -1,5 +1,3 @@
-#include "minesweeper_game.h"
-
 #include "minesweeper.h"
 
 Minesweeper::Minesweeper() : Game{"Minesweeper"}, m_times_played{0} {}

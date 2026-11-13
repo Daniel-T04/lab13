@@ -1,5 +1,3 @@
-#include "hangman_game.h"
-
 #include "hangman.h"
 
 Hangman::Hangman() : Game{"Hangman"}, m_times_played{0} {}
