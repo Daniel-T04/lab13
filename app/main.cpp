@@ -10,6 +10,8 @@
 #include "input.h"
 #include "minesweeper.h"
 
+/**
+
 namespace {
 enum class Choice { hangman, dungeon, blackjack, minesweeper, quit, invalid };
 
@@ -22,7 +24,7 @@ void print_menu() {
             << "0. Quit\n";
 }
 
-void report_score(const Game &game) {
+//void report_score(const Game &game) {
   std::cout << game.title() << " score: " << game.last_score() << "\n";
 }
 
@@ -47,6 +49,9 @@ Choice parse_choice(const std::string &text) {
 
 } // namespace
 
+**/
+
+
 int main() {
     Arcade arcade;
 
@@ -54,8 +59,54 @@ int main() {
     arcade.add(new Dungeon());
     arcade.add(new Minesweeper());
     arcade.add(new Blackjack());
-
     arcade.run();
 
-  return 0;
+    std::cout << "Goodbye.\n";
+    return 0;
 }
+  /** std::string line;
+  while (true) {
+    print_menu();
+    if (!prompt_line("Choose: ", line)) {
+      break; // input ended
+    }
+    const Choice choice{parse_choice(line)};
+    if (choice == Choice::quit) {
+      break;
+    }
+    switch (choice) {
+    case Choice::hangman: {
+      Hangman game;
+      game.play();
+      report_score(game);
+      break;
+    }
+    case Choice::dungeon: {
+      Dungeon game;
+      game.play();
+      report_score(game);
+      break;
+    }
+    case Choice::blackjack: {
+      Blackjack game;
+      game.play();
+      report_score(game);
+      break;
+    }
+    case Choice::minesweeper: {
+      Minesweeper game;
+      game.play();
+      report_score(game);
+      break;
+    }
+    case Choice::quit:
+      break;
+    case Choice::invalid:
+      std::cout << "Please enter 1-4, or 0 to quit.\n";
+      break;
+    }
+  }
+  std::cout << "Goodbye.\n";
+
+  return 0;
+} **/
