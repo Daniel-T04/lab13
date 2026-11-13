@@ -65,6 +65,50 @@ Stepping into play() landed  directrly inside Hangman::play(). In contrast to We
 
 `print *monster` and `ptype monster` with `set print object on` (paste them). Which shows the derived object, and which still shows the base type?
 
+(gdb) set print object on
+(gdb) print *monster
+$1 = {_vptr.Monster = 0x0, m_name = "", m_health = 0}
+(gdb) ptype monster
+type = class Monster {
+    std::string m_name;
+    int m_health;
+
+  public:
+    Monster(std::string, int);
+    ~Monster(void);
+    virtual int attack_damage(void) const;
+    virtual std::string describe(void) const;
+    void take_damage(int);
+    bool is_dead(void) const;
+    const std::string & name(void) const;
+} *
+
+print *monster shows the derived object, which reveals it is a Goblin form the dynamic type lookup from the virtual table.
+
+
+ptype monster still shows the base type like Monster * because ptype evaluates purely based on the static compile-time type of the pointer variable.
+
+
+
 `info vtbl *monster` for a Goblin, then for a Troll (paste both). Compare the entries:
 
+vtable for 'Monster' @ 0x555555586a60 (subobject @ 0x504000000390):
+[0]: 0x55555557613a <Goblin::~Goblin()>
+[1]: 0x555555576188 <Goblin::~Goblin()>
+[2]: 0x5555555747d4 <Goblin::attack_damage() const>
+[3]: 0x5555555747e8 <Goblin::describe[abi:cxx11]() const>
+
+
+
 Where `step` into `monster->attack_damage()` landed for each kind:
+
+The Goblin land at Goblin::attack_damage (this=0x504000000390) at /home/ubuntu/lab13/src/monster.cpp:30
+return 3;
+
+Where the Troll landed at Troll::attack_damage (this=0x5040000003d0)  /home/ubuntu/lab13/src/monster.cpp:41
+
+
+
+
+
+
